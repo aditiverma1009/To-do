@@ -1,0 +1,18 @@
+.light-on {
+  @extend .light;
+  background-color: yellow;
+}
+
+.light-off {
+  @extend .light;
+  background-color: red;
+}
+
+.light {
+  height: 50px;
+  width: 50px;
+}
+
+.counter {
+  margin-bottom: 20px;
+}
