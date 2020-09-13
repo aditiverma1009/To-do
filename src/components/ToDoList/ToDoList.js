@@ -23,7 +23,9 @@ const ToDoList = () => {
                 className={`flex-1 ml-12 ${
                   todo.status === "completed" && "line-through"
                 }`}
-                onClick={() => dispatch({ type: "TOGGLE_TODO", payload: todo })}
+                onDoubleClick={() =>
+                  dispatch({ type: "TOGGLE_TODO", payload: todo })
+                }
               >
                 {todo.text}
               </span>
@@ -32,7 +34,9 @@ const ToDoList = () => {
                   className="h-6 m-1 cursor-pointer"
                   alt="edit icon"
                   src={EditIcon}
-                  onClick={() => dispatch({ type: "EDIT_TODO", payload: todo })}
+                  onClick={() =>
+                    dispatch({ type: "SET_CURRENT_TODO", payload: todo })
+                  }
                 />
               </button>
               <button>

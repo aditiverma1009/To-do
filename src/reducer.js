@@ -22,14 +22,38 @@ const TodoReducer = (state, action) => {
         (eachToDo) => eachToDo.id !== action.payload.id
       );
 
-      return { todo: updatedTodo };
+      return { ...state, todo: updatedTodo };
     case "ADD_TODO":
       updatedTodo = {
         text: action.payload,
         status: "open",
         id: uuidv4(),
       };
-      return { todo: [...state.todo, updatedTodo] };
+      return { ...state, todo: [...state.todo, updatedTodo] };
+
+    case "UPDATE_TODO":
+      updatedTodo = {
+        ...state.currentToDo,
+        text: action.payload,
+      };
+      const updatedToDoIndex = state.todo.findIndex(
+        (eachTodo) => eachTodo.id === state.currentToDo.id
+      );
+      const updatedTodoReplace = [
+        ...state.todo.slice(0, updatedToDoIndex),
+        updatedTodo,
+        ...state.todo.slice(updatedToDoIndex + 1),
+      ];
+      return {
+        ...state,
+        currentToDo: {},
+        todo: updatedTodoReplace,
+      };
+    case "SET_CURRENT_TODO":
+      return {
+        ...state,
+        currentToDo: action.payload,
+      };
     default:
       return state;
   }

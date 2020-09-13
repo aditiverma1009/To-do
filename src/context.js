@@ -6,6 +6,7 @@ const initialContext = {
     { id: 2, text: "To give a talk", status: "completed" },
     { id: 3, text: "To publish doc", status: "open" },
   ],
+  currentToDo: {},
 };
 const TodoContext = React.createContext(initialContext);
 export default TodoContext;
