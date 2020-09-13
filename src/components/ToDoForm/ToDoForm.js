@@ -20,6 +20,8 @@ const ToDoForm = () => {
   useEffect(() => {
     if (currentToDo.text) {
       setToDo(currentToDo.text);
+    } else {
+      setToDo("");
     }
   }, [currentToDo.id]);
 

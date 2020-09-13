@@ -21,7 +21,9 @@ const TodoReducer = (state, action) => {
       updatedTodo = state.todo.filter(
         (eachToDo) => eachToDo.id !== action.payload.id
       );
-      return { ...state, todo: updatedTodo };
+      const isRemovedTodo =
+        state.currentToDo.id === action.payload.id ? {} : state.currentToDo;
+      return { ...state, currentToDo: isRemovedTodo, todo: updatedTodo };
     case "ADD_TODO":
       if (!action.payload) {
         return state;
