@@ -21,9 +21,14 @@ const TodoReducer = (state, action) => {
       updatedTodo = state.todo.filter(
         (eachToDo) => eachToDo.id !== action.payload.id
       );
-
       return { ...state, todo: updatedTodo };
     case "ADD_TODO":
+      if (!action.payload) {
+        return state;
+      }
+      if (state.todo.findIndex((t) => t.text === action.payload) > -1) {
+        return state;
+      }
       updatedTodo = {
         text: action.payload,
         status: "open",
@@ -32,6 +37,12 @@ const TodoReducer = (state, action) => {
       return { ...state, todo: [...state.todo, updatedTodo] };
 
     case "UPDATE_TODO":
+      if (!action.payload) {
+        return state;
+      }
+      if (state.todo.findIndex((t) => t.text === action.payload) > -1) {
+        return state;
+      }
       updatedTodo = {
         ...state.currentToDo,
         text: action.payload,
