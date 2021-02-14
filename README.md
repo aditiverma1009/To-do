@@ -1,4 +1,8 @@
-Todo app to create, update and delete todos. Show use of useReducer, useContext, useEffect, useState, etc
+Todo app to create, update and delete todos. Show use of: 
+- useReducer
+- useContext
+- useEffect
+- useState
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
